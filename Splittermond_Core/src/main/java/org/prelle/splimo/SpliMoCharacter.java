@@ -671,7 +671,7 @@ public class SpliMoCharacter implements Lifeform, RuleSpecificCharacterObject {
 	public int getSpellValueFor(SpellValue spellVal) {
 		SkillValue skillVal = getSkillValue(spellVal.getSkill());
 		// Calculate value for skill, including attributes
-		int val = skillVal.getValue();
+		int val = skillVal.getModifiedValue();
 		val += getAttribute(skillVal.getSkill().getAttribute1()).getValue();
 		val += getAttribute(skillVal.getSkill().getAttribute2()).getValue();
 
@@ -682,7 +682,7 @@ public class SpliMoCharacter implements Lifeform, RuleSpecificCharacterObject {
 			val += skillVal.getSpecializationLevel(spec);
 		}
 
-		return val;
+		return val + EquipmentTools.getSpellBonus(this, spellVal);
 	}
 
 	//-------------------------------------------------------------------

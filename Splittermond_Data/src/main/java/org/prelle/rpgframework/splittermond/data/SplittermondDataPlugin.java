@@ -492,6 +492,11 @@ public class SplittermondDataPlugin implements RulePlugin<SpliMoCharacter> {
 		// Load after Magie and Zhoujiang: the educations reuse their masterships.
 		PluginSkeleton SCHLEIER = new PluginSkeleton("Schleier", "Hinter dem Schleier");
 		SplitterMondCore.loadMasterships(SCHLEIER, clazz.getResourceAsStream("schleier/data/masterships-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());
+		// These catalogues are optional so the code also works with older data packages.
+		if (clazz.getResource("schleier/data/powers-schleier.xml")!=null)
+			SplitterMondCore.loadPowers(SCHLEIER, clazz.getResourceAsStream("schleier/data/powers-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());
+		if (clazz.getResource("schleier/data/spells-schleier.xml")!=null)
+			SplitterMondCore.loadSpells(SCHLEIER, clazz.getResourceAsStream("schleier/data/spells-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());
 		SplitterMondCore.loadEducations(SCHLEIER, clazz.getResourceAsStream("schleier/data/educations-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());
 		SplitterMondCore.loadMaterials(SCHLEIER, clazz.getResourceAsStream("schleier/data/materials-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());
 		SplitterMondCore.loadEquipment(SCHLEIER, clazz.getResourceAsStream("schleier/data/equipment-schleier.xml"), SCHLEIER.getResources(), SCHLEIER.getHelpResources());

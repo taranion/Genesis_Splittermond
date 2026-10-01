@@ -508,6 +508,10 @@ public class ItemLevellerAndGenerator implements NewItemController {
 		int maxQuality = model.getItemQuality();
 		if (model.getMaterial()!=null && model.getMaterial().getQuality()>0)
 			Math.max(model.getItemQuality(), model.getMaterial().getQuality());
+		if (model.getItem().getCatalogProfile()!=null) {
+			// The catalogue price already pays for the included recipe quality.
+			maxQuality -= model.getItem().getCatalogProfile().getItemQuality();
+		}
 		switch (maxQuality) {
 		case -3: basePrice = (int)Math.round( ((float)basePrice) * 0.7 ); break;
 		case -2: basePrice = (int)Math.round( ((float)basePrice) * 0.8 ); break;

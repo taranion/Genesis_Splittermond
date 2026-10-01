@@ -755,6 +755,7 @@ public class CarriedItem extends UniqueObject implements Comparable<CarriedItem>
 	//--------------------------------------------------------------------
 	private int[] getQuality() {
 		int normal = 0;
+		int alchemy = ref.getCatalogProfile()==null ? 0 : ref.getCatalogProfile().getAlchemyCost();
 		int magic  = 0;
 		int relic  = 0;
 //		if (material!=null && !material.getId().startsWith("common"))
@@ -763,12 +764,17 @@ public class CarriedItem extends UniqueObject implements Comparable<CarriedItem>
 //			logger.warn("****Enhancement "+enhance+" is of type "+enhance.getEnhancement().getType()+" and of size "+enhance.getEnhancement().getSize());
 			switch (enhance.getEnhancement().getType()) {
 			case MAGIC: magic+=enhance.getEnhancement().getSize(); break;
+			case ALCHEMY:
+				if (ref.getCatalogProfile()!=null) alchemy+=enhance.getEnhancement().getSize();
+				else normal+=enhance.getEnhancement().getSize();
+				break;
 //			case RELIC: relic+=enhance.getEnhancement().getSize(); break;
 			default:
 				normal+=enhance.getEnhancement().getSize();
 			}
 		}
 		
+		if (ref.getCatalogProfile()!=null) normal += Math.max(0, alchemy-1);
 		if (material!=null) {
 			normal = Math.max(normal, material.getQuality());
 		}
@@ -777,7 +783,8 @@ public class CarriedItem extends UniqueObject implements Comparable<CarriedItem>
 
 	//--------------------------------------------------------------------
 	public int getQuality(EnhancementType type) {
-		int count = 0;
+		int count = type==EnhancementType.ALCHEMY && ref.getCatalogProfile()!=null
+				? ref.getCatalogProfile().getAlchemyCost() : 0;
 		for (EnhancementReference enhance : enhancements) {
 			if (enhance.getEnhancement().getType()==type)
 				count += enhance.getEnhancement().getSize();
@@ -798,7 +805,7 @@ public class CarriedItem extends UniqueObject implements Comparable<CarriedItem>
 	 * @return the quality
 	 */
 	public int getItemQuality() {
-		if (ref.isType(ItemType.POTION))
+		if (ref.isType(ItemType.POTION) && ref.getCatalogProfile()==null)
 			return getQuality()[0]-1;
 		return getQuality()[0];
 	}
@@ -816,6 +823,8 @@ public class CarriedItem extends UniqueObject implements Comparable<CarriedItem>
 
 	//--------------------------------------------------------------------
 	public int getTotalQuality() {
+		// Finished catalogue items carry their included quality, not an empty recipe budget.
+		if (ref.getCatalogProfile()!=null) return getItemQuality() + getArtifactQuality();
 		int quality = 0;
 		for (EnhancementReference enhance : enhancements) {
 			quality+=enhance.getEnhancement().getSize();

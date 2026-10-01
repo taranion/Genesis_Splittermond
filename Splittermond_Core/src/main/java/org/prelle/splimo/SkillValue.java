@@ -222,13 +222,17 @@ public class SkillValue extends ModifyableImpl implements Comparable<SkillValue>
 		int count = 0;
 		int countEquip = 0;
 		int countMagic = 0;
+		int penalties = 0;
 		for (Modification mod : modifications) {
 			if (mod instanceof SkillModification) {
 				SkillModification sMod = (SkillModification)mod;
 				if (sMod.isConditional())
 					continue;
 				if (sMod.getSkill()==skill) {
-					if (sMod.getModificationSource()==ModificationSource.EQUIPMENT)
+					if (sMod.getValue()<0 && (sMod.getModificationSource()==ModificationSource.EQUIPMENT
+							|| sMod.getModificationSource()==ModificationSource.MAGICAL))
+						penalties += sMod.getValue();
+					else if (sMod.getModificationSource()==ModificationSource.EQUIPMENT)
 						countEquip += sMod.getValue();
 					else if (sMod.getModificationSource()==ModificationSource.MAGICAL)
 						countMagic += sMod.getValue();
@@ -246,8 +250,24 @@ public class SkillValue extends ModifyableImpl implements Comparable<SkillValue>
 			count += countEquip;
 		}
 
-		return count;
+		return count + penalties;
 	}
+
+	/** Positive equipment bonuses already occupying the shared bonus cap. */
+	public int getPositiveEquipmentModifier() {
+		int positive = 0;
+		for (Modification mod : modifications) {
+			if (mod instanceof SkillModification) {
+				SkillModification value = (SkillModification)mod;
+				if (!value.isConditional() && value.getSkill()==skill && value.getValue()>0
+						&& value.getModificationSource()==ModificationSource.EQUIPMENT)
+					positive += value.getValue();
+			}
+		}
+		return positive;
+	}
+
+	public int getModifierCap() { return modifierCap; }
 
 	//-------------------------------------------------------------------
 	public void setModifierCap(int modifierCap) {
