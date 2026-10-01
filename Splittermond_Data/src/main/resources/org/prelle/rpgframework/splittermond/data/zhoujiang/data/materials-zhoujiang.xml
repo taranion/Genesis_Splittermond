@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <materials>
-	<material id="ghostsilk" quality="4" price="7500" type="FABRIC">
+	<material id="ghostsilk" quality="5" price="7500" type="FABRIC">
 		<modifications>
 			<attrmod attr="MINDRESIST" val="1"/>
 	   <!-- <attrmod attr="FOCUS" value="MIND/2"/>-->

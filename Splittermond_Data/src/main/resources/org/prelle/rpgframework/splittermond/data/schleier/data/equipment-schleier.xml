@@ -6,4 +6,29 @@
          described in the help rather than granting either a permanent bonus. -->
     <item id="prayer_wheel" avail="SMALL_TOWN" price="300" load="1" robust="1" cplx="G" type="OTHER" />
     <item id="ghost_lights" avail="SMALL_TOWN" price="500" load="1" robust="0" cplx="G" type="OTHER" />
+
+    <!-- Additional character equipment, HdS pp. 41, 42, 44. -->
+    <item id="nurghons_breath" avail="SMALL_TOWN" price="200" load="0" robust="0" type="POTION" />
+    <item id="huularu_mango" avail="VILLAGE" price="4" load="0" robust="0" type="POTION" />
+    <item id="veil_moss" avail="VILLAGE" price="1" load="0" robust="0" type="POTION" />
+    <item id="spirit_lily" avail="LARGE_TOWN" price="400" load="0" robust="0" type="POTION" />
+    <item id="sedative" avail="SMALL_TOWN" price="1000" load="0" robust="0" type="POTION" />
+    <item id="strong_sedative" avail="SMALL_TOWN" price="1500" load="0" robust="0" type="POTION" />
+    <item id="dream_resin" avail="SMALL_TOWN" price="1500" load="0" robust="0" type="POTION" />
+    <item id="pale_lily_extract" avail="LARGE_TOWN" price="2500" load="0" robust="0" type="POTION" />
+    <item id="spirit_incense" avail="VILLAGE" price="3" load="0" robust="0" type="POTION" />
+    <item id="soul_wax" avail="SMALL_TOWN" price="500" load="0" robust="0" type="POTION" />
+    <item id="book_spirit_travel" avail="LARGE_TOWN" price="3000" load="2" robust="1" type="OTHER" cplx="M" skill="arcanelore" />
+    <item id="book_spirit_summon_banish" avail="LARGE_TOWN" price="4000" load="2" robust="1" type="OTHER" cplx="F" skill="deathmagic" />
+    <item id="book_spirit_almanac" avail="LARGE_TOWN" price="2000" load="2" robust="1" type="OTHER" cplx="F" skill="deathmagic" />
+    <item id="book_zhelom_travels" avail="CAPITAL" price="15000" load="2" robust="1" type="OTHER" cplx="M" skill="history" />
+    <item id="portable_spirit_circle" avail="NONE" price="9000" load="0" robust="0" type="OTHER" />
+    <item id="portable_spirit_circle_improved" avail="NONE" price="15000" load="0" robust="0" type="OTHER" />
+    <item id="portable_spirit_circle_charged" avail="NONE" price="21000" load="0" robust="0" type="OTHER" />
+    <item id="spirit_salt_circle" avail="NONE" price="1800" load="0" robust="0" type="POTION" />
+    <item id="spirit_salt_circle_improved" avail="NONE" price="3600" load="0" robust="0" type="POTION" />
+    <item id="spirit_salt_shield" avail="NONE" price="1200" load="0" robust="0" type="POTION" />
+    <item id="spirit_salt_shield_improved" avail="NONE" price="2400" load="0" robust="0" type="POTION" />
+    <item id="spirit_salt_close" avail="NONE" price="1800" load="0" robust="0" type="POTION" />
+    <item id="spirit_salt_close_improved" avail="NONE" price="3600" load="0" robust="0" type="POTION" />
 </items>

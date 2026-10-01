@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spells>
+    <spell id="forced_return" diff="24" cost="12V3" castdur="20T" range="TOUCH" enh="2/+3V3">
+        <school skill="deathmagic" level="3" />
+        <type>OTHERWORLD</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>EXHAUSTED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+    </spell>
+    <spell id="sense_foreign_control" diff="21" cost="8V2" castdur="8T" range="5m" enh="1/+1V1">
+        <school skill="insightmagic" level="2" />
+        <school skill="healmagic" level="2" />
+        <type>PERCEPTION</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>EXHAUSTED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+        <enhancementtype>RANGE</enhancementtype>
+    </spell>
+    <spell id="sense_spirit_anchor" diff="21" cost="K8V2" castdur="12T" range="CASTER" enh="1/+1V1" spelldur="K" effectRange="10">
+        <school skill="insightmagic" level="3" />
+        <school skill="naturemagic" level="2" />
+        <school skill="deathmagic" level="3" />
+        <type>PERCEPTION</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>CHANNELIZED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+        <enhancementtype>EFFECT_RANGE</enhancementtype>
+    </spell>
+    <spell id="spirit_mimicry" diff="27" cost="K16V4" castdur="14T" range="CASTER" enh="2/+3V3" spelldur="K">
+        <school skill="transformationmagic" level="4" />
+        <school skill="deathmagic" level="4" />
+        <type>CAMOUFLAGE</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>CHANNELIZED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+    </spell>
+    <spell id="spirit_wall" diff="24" cost="K12V3" castdur="12T" range="5m" enh="1/+K2V2" spelldur="K">
+        <school skill="deathmagic" level="3" />
+        <type>WALL</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>CHANNELIZED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+        <enhancementtype>RANGE</enhancementtype>
+    </spell>
+    <spell id="message_from_beyond" diff="21" cost="8V2" castdur="5m" range="5000m" enh="2/+3V3">
+        <school skill="insightmagic" level="2" />
+        <school skill="deathmagic" level="3" />
+        <type>OTHERWORLD</type>
+        <type>MESSAGE</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>EXHAUSTED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+        <enhancementtype>RANGE</enhancementtype>
+    </spell>
+    <spell id="otherworld_flame" diff="21" cost="8V2" castdur="9T" range="10m" enh="1/+2V2" spelldur="24h" effectRange="10">
+        <school skill="lightmagic" level="2" />
+        <school skill="deathmagic" level="2" />
+        <type>OTHERWORLD</type>
+        <type>ILLUMINATION</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>EXHAUSTED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+        <enhancementtype>RANGE</enhancementtype>
+        <enhancementtype>EFFECT_RANGE</enhancementtype>
+    </spell>
+    <spell id="sever_spirit_bond" diff="27" cost="16V4" castdur="10m" range="TOUCH" enh="3/+3V3">
+        <school skill="antimagic" level="4" />
+        <school skill="deathmagic" level="3" />
+        <type>WEAKEN</type>
+        <type>EXORCISE</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>EXHAUSTED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+    </spell>
+    <spell id="invisible_to_spirits" diff="24" cost="K12V3" castdur="12T" range="CASTER" enh="2/+K3V3" spelldur="K">
+        <school skill="illusionmagic" level="4" />
+        <school skill="deathmagic" level="3" />
+        <type>GHOST_CREATURE</type>
+        <type>CAMOUFLAGE</type>
+        <enhancementtype>RELEASETIME</enhancementtype>
+        <enhancementtype>CHANNELIZED_FOCUS</enhancementtype>
+        <enhancementtype>CONSUMED_FOCUS</enhancementtype>
+    </spell>
+</spells>
