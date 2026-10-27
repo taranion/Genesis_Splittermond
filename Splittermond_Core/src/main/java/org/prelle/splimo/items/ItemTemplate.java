@@ -73,6 +73,23 @@ public class ItemTemplate extends BasePluginData implements Comparable<ItemTempl
 	@AttribConvert(SpecializationConverter.class)
 	private SkillSpecialization specialization;
 	
+	/** Loaded from optional sidecar data; never written into legacy item definitions. */
+	private transient List<ItemSpellBonus> spellBonuses = new ArrayList<>();
+	/** Optional sidecar metadata; original catalogue XML remains readable by old cores. */
+	private transient ItemCatalogProfile catalogProfile;
+
+	public ItemCatalogProfile getCatalogProfile() { return catalogProfile; }
+
+	public void setCatalogProfile(ItemCatalogProfile profile) { catalogProfile = profile; }
+
+	public List<ItemSpellBonus> getSpellBonuses() {
+		return java.util.Collections.unmodifiableList(spellBonuses);
+	}
+
+	public void setSpellBonuses(List<ItemSpellBonus> bonuses) {
+		spellBonuses = new ArrayList<>(bonuses);
+	}
+
 	//--------------------------------------------------------------------
 	public ItemTemplate() {
 		typeData = new ArrayList<ItemTypeData>();

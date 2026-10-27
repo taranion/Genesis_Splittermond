@@ -1143,6 +1143,49 @@ public class SplitterMondCore {
 	}
 
 	//-------------------------------------------------------------------
+	private static void loadEquipmentSpellBonuses(RulePlugin<?> plugin, ResourceBundle resources,
+			List<ItemTemplate> loadedItems) throws Exception {
+		String key = "equipment.bonuses.resource";
+		if (resources==null || !resources.containsKey(key))
+			return;
+		try (InputStream stream = plugin.getClass().getResourceAsStream(resources.getString(key))) {
+			if (stream==null)
+				throw new IOException("Missing equipment bonus resource: "+resources.getString(key));
+			org.prelle.splimo.items.ItemSpellBonusList bonuses = serializer.read(
+					org.prelle.splimo.items.ItemSpellBonusList.class, stream);
+			for (ItemTemplate item : loadedItems) {
+				List<org.prelle.splimo.items.ItemSpellBonus> matching = new ArrayList<>();
+				for (org.prelle.splimo.items.ItemSpellBonus bonus : bonuses) {
+					if (item.getId().equals(bonus.getItemId())) {
+						if (bonus.getSkill()==null || bonus.getValue()<=0 || bonus.getTypes().isEmpty())
+							throw new IllegalArgumentException("Invalid spell bonus for "+item.getId());
+						matching.add(bonus);
+					}
+				}
+				item.setSpellBonuses(matching);
+			}
+		}
+	}
+
+	private static void loadEquipmentCatalogProfiles(RulePlugin<?> plugin, ResourceBundle resources,
+			List<ItemTemplate> loadedItems) throws Exception {
+		String key = "equipment.profiles.resource";
+		if (resources==null || !resources.containsKey(key)) return;
+		try (InputStream stream = plugin.getClass().getResourceAsStream(resources.getString(key))) {
+			if (stream==null) throw new IOException("Missing equipment profile resource: "+resources.getString(key));
+			org.prelle.splimo.items.ItemCatalogProfileList profiles = serializer.read(
+					org.prelle.splimo.items.ItemCatalogProfileList.class, stream);
+			java.util.Set<String> ids = new java.util.HashSet<>();
+			for (org.prelle.splimo.items.ItemCatalogProfile profile : profiles) {
+				if (profile.getAlchemyCost()<0 || !ids.add(profile.getItemId()))
+					throw new IllegalArgumentException("Invalid catalogue profile: "+profile.getItemId());
+				for (ItemTemplate item : loadedItems) {
+					if (item.getId().equals(profile.getItemId())) item.setCatalogProfile(profile);
+				}
+			}
+		}
+	}
+
 	public static void loadEquipment(RulePlugin<? extends SpliMoCharacter> plugin, InputStream in, ResourceBundle resrc, ResourceBundle helpResources) {
 		logger.debug("Load equipment (Plugin="+plugin.getID()+")");
 
@@ -1181,6 +1224,10 @@ public class SplitterMondCore {
 			}
 
 			items.addAll(toAdd);
+			if (!missingLicense) {
+				loadEquipmentSpellBonuses(plugin, resrc, toAdd);
+				loadEquipmentCatalogProfiles(plugin, resrc, toAdd);
+			}
 			Collections.sort(items);
 
 			/*

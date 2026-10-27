@@ -703,4 +703,25 @@ public class EquipmentTools {
 	}
 
 
+	/** Optional school/type bonuses from equipped catalogue items. */
+	public static int getSpellBonus(SpliMoCharacter model, SpellValue spell) {
+		java.util.Map<String, Integer> groups = new java.util.HashMap<>();
+		for (CarriedItem item : model.getItems(ItemLocationType.BODY)) {
+			if (item.getCount()<=0)
+				continue;
+			for (org.prelle.splimo.items.ItemSpellBonus bonus : item.getItem().getSpellBonuses()) {
+				if (!bonus.matches(spell))
+					continue;
+				String group = bonus.getGroup()==null ? item.getItem().getId() : bonus.getGroup();
+				groups.merge(group, bonus.getValue(), Math::max);
+			}
+		}
+		int additional = groups.values().stream().mapToInt(Integer::intValue).sum();
+		SkillValue skill = model.getSkillValue(spell.getSkill());
+		// Penalties are applied after the positive-bonus cap; they do not free capacity.
+		int positive = skill.getPositiveEquipmentModifier();
+		return skill.getModifierCap()>0
+				? Math.min(additional, Math.max(0, skill.getModifierCap()-positive)) : additional;
+	}
+
 }
