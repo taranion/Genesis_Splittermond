@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HdS p. 42: alchemyCost records effect costs, not final item quality.
+     Finished recipes include one free effect point. Other entries have no stated
+     alchemical quality; zero keeps them neutral and preserves the catalogue price. -->
+<equipment-profiles>
+    <profile item="nurghons_breath" />
+    <profile item="huularu_mango" />
+    <profile item="veil_moss" />
+    <profile item="spirit_lily" />
+    <profile item="sedative" alchemyCost="2" />
+    <profile item="strong_sedative" alchemyCost="3" />
+    <profile item="dream_resin" alchemyCost="3" />
+    <profile item="pale_lily_extract" alchemyCost="3" />
+    <profile item="spirit_incense" />
+    <profile item="soul_wax" alchemyCost="2" />
+    <profile item="spirit_salt_circle" />
+    <profile item="spirit_salt_circle_improved" />
+    <profile item="spirit_salt_shield" />
+    <profile item="spirit_salt_shield_improved" />
+    <profile item="spirit_salt_close" />
+    <profile item="spirit_salt_close_improved" />
+</equipment-profiles>

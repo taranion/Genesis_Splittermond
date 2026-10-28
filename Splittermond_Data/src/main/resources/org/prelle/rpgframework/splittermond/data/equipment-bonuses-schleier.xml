@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Optional calculation metadata. Legacy loaders do not read this resource. -->
+<equipment-bonuses>
+    <bonus item="book_spirit_summon_banish" skill="deathmagic" value="2">
+        <type>CONJURATION</type>
+        <type>EXORCISE</type>
+    </bonus>
+    <bonus item="book_spirit_almanac" skill="deathmagic" value="2">
+        <type>GHOST_CREATURE</type>
+    </bonus>
+</equipment-bonuses>

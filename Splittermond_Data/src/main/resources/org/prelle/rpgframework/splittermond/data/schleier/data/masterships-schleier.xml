@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skills>
+    <skill id="arcanelore">
+        <mastership level="1" key="spiritlore1" />
+        <mastership level="2" key="spiritlore2">
+            <requires>
+                <masterreq ref="arcanelore/spiritlore1" />
+            </requires>
+        </mastership>
+    </skill>
+    <skill id="diplomacy">
+        <mastership level="1" key="spiritdiplomat" />
+    </skill>
+    <skill id="empathy">
+        <mastership level="1" key="spiritempathy1" />
+        <mastership level="2" key="spiritempathy2">
+            <requires>
+                <masterreq ref="empathy/spiritempathy1" />
+            </requires>
+        </mastership>
+        <mastership level="1" key="spiritworldsense1" />
+        <mastership level="2" key="spiritworldsense2">
+            <requires>
+                <masterreq ref="empathy/spiritworldsense1" />
+            </requires>
+        </mastership>
+    </skill>
+    <skill id="determination">
+        <mastership level="1" key="steadfastsoul1" />
+        <mastership level="3" key="steadfastsoul2">
+            <requires>
+                <masterreq ref="determination/steadfastsoul1" />
+            </requires>
+        </mastership>
+        <mastership level="1" key="undaunted" />
+        <mastership level="1" key="willform" />
+        <mastership level="2" key="willweapon">
+            <requires>
+                <masterreq ref="determination/willform" />
+            </requires>
+        </mastership>
+        <mastership level="3" key="willarmor">
+            <requires>
+                <masterreq ref="determination/willweapon" />
+            </requires>
+        </mastership>
+    </skill>
+    <skill id="perception">
+        <mastership level="2" key="apartbutunited" />
+    </skill>
     <skill id="deathmagic">
-        <!-- Starting mastership of the Ahnentraeger education (book p. 48).
-             Its effect requires a successful active defence against possession. -->
+        <mastership level="1" key="powerofwill1" />
+        <mastership level="2" key="powerofwill2">
+            <requires>
+                <masterreq ref="deathmagic/powerofwill1" />
+            </requires>
+        </mastership>
+        <mastership level="3" key="powerofwill3">
+            <requires>
+                <masterreq ref="deathmagic/powerofwill2" />
+            </requires>
+        </mastership>
         <mastership level="1" key="medium1" />
+        <mastership level="2" key="medium2">
+            <requires>
+                <masterreq ref="deathmagic/medium1" />
+            </requires>
+        </mastership>
+        <mastership level="4" key="onewithbeyond">
+            <requires>
+                <masterreq ref="deathmagic/powerofwill3" />
+                <masterreq ref="determination/willform" />
+            </requires>
+        </mastership>
+    </skill>
+    <skill id="combatmagic">
+        <mastership level="2" key="spiritfoe_dead">
+            <requires>
+                <masterreq ref="antimagic/opponent_ghost" />
+            </requires>
+        </mastership>
+        <mastership level="2" key="spiritfoe_nature">
+            <requires>
+                <masterreq ref="antimagic/opponent_ghost" />
+            </requires>
+        </mastership>
+        <mastership level="2" key="spiritfoe_civilization">
+            <requires>
+                <masterreq ref="antimagic/opponent_ghost" />
+            </requires>
+        </mastership>
     </skill>
 </skills>
